@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+
     <head>
         <meta charset="utf-8">
         <title>Log In Page</title>
@@ -43,7 +45,7 @@
            
         
             
-            </div>
+        </div>
        
         <div class="grid-container">
         <p class="checkerTitles">Depression</p>
@@ -124,8 +126,8 @@
             </select>
         </div>
 
-        <img class="imageClass" src="Images/2017.png" alt="" width="2650" height="709">
-        
+        <canvas id="myChart" style="width: 100%; max-width: 1200px; display: block;" width="1000" height="500" class="chartjs"></canvas>
+        <script src="JS/graph.js"></script>
     </div>
     </header>
     </div>
