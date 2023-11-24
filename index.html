@@ -1,137 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
 
-    <head>
-        <meta charset="utf-8">
-        <title>Log In Page</title>
-        <link rel="stylesheet" href="css/main.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body class="indexbody">
-        
+
+<head>
+    <meta charset="utf-8">
+    <title>Log In Page</title>
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script type="text/javascript" src="./JS/src/chart.js"></script>
+   
+</head>
+<!-- The <body> tag represents the content of the HTML document that is displayed in the web browser -->
+<body class="indexbody">
+ <!-- A <div> element with class 'heading' for styling and grouping content -->
     <div class="heading">
-    <header>
-        <span class="title1">FIMM GOOGLE TRENDS PROJECT</span>
+        <!-- The <header> tag represents a container for introductory content -->
+        <header>
+            <!-- The <span> tag with class 'title1' for inline styling of the project title -->
+            <span class="title1">FIMM GOOGLE TRENDS PROJECT</span>
+        </header>
+
+        <h2 class="infoManualHeaders">Info</h2>
+        <!-- A paragraph <p> with class 'info' for descriptive text about the website's purpose -->
+        <p class="info">
+            This website is a tool to illustrate the seasonality of google searches of mood, interest of doing exercise
+            and observe the weather conditions in those seasonal changes.
+        </p>
+        <h2 class="infoManualHeaders">User Manual</h2>
+        <h3 class="underTitles">Choosing categories and regions.</h3>
+        <p class="manual">
+            You can compare differences between countires by selecting them from the buttons below the respective
+            countrys flag.<br>
+            Then choose Data categories you want to see on the chart with the buttons below their names.<br>
+            To remove Data categories or a country from the chart simply uncheck the selected country or category you
+            want gone.
+            <br>
+            <br>
+            Categories are marked with titles.<br>
+            "TRENDS" is for Google Trends data.<br>
+            "WEATHER"" is for MetOffice weather data.<br>
+            <br>
+            <!-- Blue is for UKBB data. -->
+
+        </p>
+        <h3 class="underTitles">Start date and End date.</h3>
+        <p>
+            The default time scope to compare in the chart is January 2006 as the start date and December 2019 as the
+            end date.<br>
+            To change start date select the month by clicking the arrow facing down of the current selected start month
+            button and click the month you want from the list that opens.<br>
+            Then change start year by clicking the the downward facing arrow of the current selected start year button
+            and click the year you want from the list that opens.<br>
+            Selecting the end date works the same way as selecting the start date.
+        </p>
         <div class="countryGrid-Container">
-           <div class="gbGrid">
-            <img src="Images/Flags/GB.png" class="flags">
-            <p class="regionCheckerTitles">GB</p>
-            <input class ="regionCheckersGB" type="checkbox" id="GB" name="GB" value="GB">
-           </div>
-           <div class="gbGrid">
-            <img src="Images/Flags/ENG.png" class="flags">
-            <p class="regionCheckerTitles">ENG</p>
-            <input class ="regionCheckersGB" type="checkbox" id="ENG" name="ENG" value="ENG">
-           </div>
-           <div class="gbGrid">
-            <img src="Images/Flags/NIR.png" class="flags">
-            <p class="regionCheckerTitles">NIR</p>
-            <input class ="regionCheckersGB" type="checkbox" id="NIR" name="NIR" value="NIR">
-           </div>
-           <div class="gbGrid">
-            <img src="Images/Flags/SCT.png" class="flags">
-            <p class="regionCheckerTitles">SCT</p>
-            <input class ="regionCheckersGB" type="checkbox" id="SCT" name="SCT" value="SCT">
-           </div>
-           <div class="gbGrid">
-            <img src="Images/Flags/WLS.png" class="flags">
-            <p class="regionCheckerTitles">WLS</p>
-            <input class ="regionCheckersGB" type="checkbox" id="WLS" name="WLS" value="WLS">
+            <div class="gbGrid">
+                <img src="Images/Flags/GB.png" class="flags">
+                <p class="regionCheckerTitles">UK</p>
+                <input class="regionCheckersGB" type="checkbox" id="UK" name="Region" value="_UK">
             </div>
-            
-            
-           
-           
-        
-            
-        </div>
-       
-        <div class="grid-container">
-        <p class="checkerTitles">Depression</p>
-        <p class="checkerTitles">Exercise</p>
-        <p class="checkerTitles">Sun</p>
-        <p class="checkerTitles">Rain</p>
-        <p class="checkerTitles">MaxTemp</p>
-        <p class="checkerTitles">MeanTemp</p>
-        <p class="checkerTitles">MinTemp</p>
+            <div class="gbGrid">
+                <img src="Images/Flags/ENG.png" class="flags">
+                <p class="regionCheckerTitles">ENG</p>
+                <input class="regionCheckersGB" type="checkbox" id="ENG" name="Region" value="_ENG">
+            </div>
+            <div class="gbGrid">
+                <img src="Images/Flags/NIR.png" class="flags">
+                <p class="regionCheckerTitles">NIR</p>
+                <input class="regionCheckersGB" type="checkbox" id="NIR" name="Region" value="_NIR">
+            </div>
+            <div class="gbGrid">
+                <img src="Images/Flags/SCT.png" class="flags">
+                <p class="regionCheckerTitles">SCT</p>
+                <input class="regionCheckersGB" type="checkbox" id="SCT" name="Region" value="_SCT">
+            </div>
+            <div class="gbGrid">
+                <img src="Images/Flags/WLS.png" class="flags">
+                <p class="regionCheckerTitles">WLS</p>
+                <input class="regionCheckersGB" type="checkbox" id="WLS" name="Region" value="_WLS">
+            </div>
 
 
-        <input class ="checkers" type="checkbox" id="Depression" name="Depression" value="Depression">
-        <input class ="checkers" type="checkbox" id="Exercise" name="Exercise" value="Exercise">
-        <input class ="checkers" type="checkbox" id="Sun" name="Sun" value="Sun">
-        <input class ="checkers" type="checkbox" id="Rain" name="Rain" value="Rain">
-        <input class ="checkers" type="checkbox" id="MaxTemp" name="MaxTemp" value="MaxTemp">
-        <input class ="checkers" type="checkbox" id="MeanTemp" name="MeanTemp" value="MeanTemp">
-        <input class ="checkers" type="checkbox" id="MinTemp" name="MinTemp" value="MinTemp">
         </div>
-        <div class= "Inputs">
-         <label for="Start Date Month" class="selectStartMonthLabel">Start Date Month:</label>
-         <select name="Month" id="Start Date Month"  class="selectStartMonth">
-             <option value="January">January</option> 
-             <option value="February">February</option> 
-             <option value="March">March</option> 
-             <option value="April">April</option> 
-             <option value="May">May</option>
-             <option value="June">June</option>
-             <option value="July">July</option>
-             <option value="August">August</option>
-             <option value="September">September</option> 
-             <option value="October">October</option>   
-             <option value="November">November</option>   
-             <option value="December">December</option> 
-         </select>
-         <label for="Start Date Year" class="selectStartYearLabel">Start Date Year:</label>
-          <select name="Start Year" id="Start Date Year"  class="selectStartYear">
-            <option value="2011">2011</option> 
-            <option value="2012">2012</option> 
-            <option value="2013">2013</option> 
-            <option value="2014">2014</option>            
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option> 
-            <option value="2018">2018</option>   
-            <option value="2019">2019</option>   
-            <option value="2020">2020</option> 
-          </select>
-            
-            
-          <label for="End Date Month" class="selectEndMonthLabel">End Date Month:</label>
-         <select name="Month" id="Start Date Month"  class="selectEndMonth">
-             <option value="January">January</option> 
-             <option value="February">February</option> 
-             <option value="March">March</option> 
-             <option value="April">April</option> 
-             <option value="May">May</option>
-             <option value="June">June</option>
-             <option value="July">July</option>
-             <option value="August">August</option>
-             <option value="September">September</option> 
-             <option value="October">October</option>   
-             <option value="November">November</option>   
-             <option value="December">December</option> 
-         </select>
+        <div class="grid-container" id="containerTest">
+
+        </div>
+        <!-- Inputs class to style and position all inputs -->
+        <div class="Inputs">
+            <!-- Button for changing chart background between black and white -->
+            <label for="blackWhite" class="blackWhiteLabel">Check for dark background:</label>
+            <input class="blackWhite" type="checkbox" id="blackWhite" name="blackWhite" value="blackWhite">
+
+            <label for="Start Date Month" class="selectStartMonthLabel">Start Date Month:</label>
+            <select name="Month" id="Start Date Month" class="selectStartMonth">
+                <!-- Each <option> tag within a <select> element represents a selectable item, like a month -->
+
+                <!-- The values assigned to these options are used in the website's JavaScript to filter or process data based on user selections -->
+
+                <!-- There are more <option> elements for different months and years, allowing users to specify a time range for the data they wish to visualize -->
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+            <label for="Start Date Year" class="selectStartYearLabel">Start Date Year:</label>
+            <select name="Start Year" id="Start Date Year" class="selectStartYear">
+                <option value="0">2006</option>
+                <option value="12">2007</option>
+                <option value="24">2008</option>
+                <option value="36">2009</option>
+                <option value="48">2010</option>
+                <option value="60">2011</option>
+                <option value="72">2012</option>
+                <option value="84">2013</option>
+                <option value="96">2014</option>
+                <option value="108">2015</option>
+                <option value="120">2016</option>
+                <option value="132">2017</option>
+                <option value="144">2018</option>
+                <option value="156">2019</option>
+                <!-- <option value="168">2020</option> -->
+            </select>
+
+
+            <label for="End Date Month" class="selectEndMonthLabel">End Date Month:</label>
+            <select name="Month" id="End Date Month" class="selectEndMonth">
+                <!-- Each <option> tag within a <select> element represents a selectable item, like a month -->
+
+                <!-- The values assigned to these options are used in the website's JavaScript to filter or process data based on user selections -->
+
+                <!-- There are more <option> elements for different months and years, allowing users to specify a time range for the data they wish to visualize -->
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
             <label for="End Date Year" class="selectEndYearLabel">End Date Year:</label>
-          <select name="End Year" id="End Date Year"  class="selectEndYear">
-            <option value="2011">2011</option> 
-            <option value="2012">2012</option> 
-            <option value="2013">2013</option> 
-            <option value="2014">2014</option>            
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option> 
-            <option value="2018">2018</option>   
-            <option value="2019">2019</option>   
-            <option value="2020">2020</option>
+            <select name="End Year" id="End Date Year" class="selectEndYear">
+                <option value="0">2006</option>
+                <option value="12">2007</option>
+                <option value="24">2008</option>
+                <option value="36">2009</option>
+                <option value="48">2010</option>
+                <option value="60">2011</option>
+                <option value="72">2012</option>
+                <option value="84">2013</option>
+                <option value="96">2014</option>
+                <option value="108">2015</option>
+                <option value="120">2016</option>
+                <option value="132">2017</option>
+                <option value="144">2018</option>
+                <option value="156">2019</option>
+                <!-- <option value="168">2020</option> -->
             </select>
         </div>
+         <!-- This heading indicates a loading state, displayed while data is being fetched or processed -->
+        <h1 class="loaderPlaceHolder" id="loadingScreen">Fetching Data...</h1>
+        <!-- A container for the chart, the class 'chartScaler' has styling rules for size adjustments of the chart -->
+        <div class="chartScaler">
+            <!-- The <canvas> element is where the chart or graph is rendered. 'chartjs' class uses the Chart.js library-->
+            <canvas id="myChart" class="chartjs"></canvas>
+        </div>
+        <br>
 
-        <canvas id="myChart" style="width: 100%; max-width: 1200px; display: block;" width="1000" height="500" class="chartjs"></canvas>
-        <script src="JS/graph.js"></script>
     </div>
-    </header>
-    </div>
-  
-    <script src="JS/Index.js"></script>
-    </body>
+
+
+    <br>
+ <!-- Papa Parse library for CSV data parsing, useful for processing data sets in CSV format -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+
+<!-- External JavaScript file for handling graph-related functionalities -->
+    <script src="JS/graph.js"></script>
+
+</body>
+
 </html>
